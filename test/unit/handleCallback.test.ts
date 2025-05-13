@@ -14,7 +14,7 @@ import idTokenResponseMock from './mocks/idTokenResponseMock.json'
 import idTokenMock from './mocks/idTokenMock.json'
 import nonceMock from './mocks/nonceMock.json'
 import { createTokenValidTimeMock } from './mocks/timeMocks'
-import { vi } from 'vitest'
+import { vi, Mock } from 'vitest'
 
 describe('getCallbackParams', (): void => {
   it('should read state and code params from fragment', (): void => {
@@ -93,7 +93,7 @@ describe('handleCallback', (): void => {
               status: 200,
               json: () => Promise.resolve(tokenResponseMock)
             })
-          }) as vi.Mock
+          }) as Mock
         )
       })
       beforeAll(createTokenValidTimeMock(accessTokenMock.decodedPayload))
@@ -126,7 +126,7 @@ describe('handleCallback', (): void => {
               status: 200,
               json: () => Promise.resolve(idTokenResponseMock)
             })
-          }) as vi.Mock
+          }) as Mock
         )
         vi.spyOn(nonceModule, 'nonceHash').mockImplementation(
           vi.fn(() => {
@@ -177,7 +177,7 @@ describe('handleCallback', (): void => {
                   id_token: 'X' + idTokenResponseMock.access_token
                 })
             })
-          }) as vi.Mock
+          }) as Mock
         )
       })
       it('should not set access token or id token in storage', async (): Promise<void> => {

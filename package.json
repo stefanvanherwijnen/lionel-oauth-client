@@ -21,7 +21,7 @@
     "husky": "husky install",
     "pre-commit": "lint-staged",
     "test": "pnpm test:unit && pnpm test:e2e",
-    "test:unit": "vitest",
+    "test:unit": "vitest run",
     "test:e2e": "playwright test --config=playwright.config.ts",
     "serve:e2e": "serve ./"
   },

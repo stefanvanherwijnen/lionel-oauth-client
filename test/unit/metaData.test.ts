@@ -3,7 +3,7 @@ import createStorageModule from '../../src/createStorageModule'
 import createLogger from '../../src/logger'
 import { oidcConfig } from './test-config'
 import metaDataMock from './mocks/metaDataMock.json'
-import { vi } from 'vitest'
+import { vi, Mock } from 'vitest'
 
 describe('validateMetaData', (): void => {
   it('should not throw error with valid meta data', (): void => {
@@ -124,7 +124,7 @@ describe('getMetaData', (): void => {
               ]
             })
         })
-      }) as vi.Mock
+      }) as Mock
     )
   })
   it('should get metaData from storage if is present there', async (): Promise<void> => {

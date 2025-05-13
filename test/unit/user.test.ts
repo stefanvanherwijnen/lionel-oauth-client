@@ -5,7 +5,7 @@ import { oidcConfig } from './test-config'
 import idTokenMock from './mocks/idTokenMock.json'
 import metaDataMock from './mocks/metaDataMock.json'
 import { createTokenValidTimeMock } from './mocks/timeMocks'
-import { vi } from 'vitest'
+import { vi, Mock } from 'vitest'
 
 describe('getUser', (): void => {
   describe('when token is valid', (): void => {
@@ -70,7 +70,7 @@ describe('getUserInfo', (): void => {
           status: 200,
           json: () => Promise.resolve({ sub: 'mocked_user_info_sub' })
         })
-      }) as vi.Mock
+      }) as Mock
     )
   })
   it('should get user info', async (): Promise<void> => {

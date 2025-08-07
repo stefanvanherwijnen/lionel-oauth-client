@@ -94,7 +94,7 @@ describe('removeAccessToken', (): void => {
     storageModule.set('accessToken', accessTokenMock.encoded)
     storageModule.set('accessTokenExpires', (Date.now() + 1000).toString())
     let accessToken = getAccessToken(storageModule, logger)
-    // expect(accessToken).toBe(accessTokenMock.encoded)
+    expect(accessToken).toBe(accessTokenMock.encoded)
     removeAccessToken(storageModule, logger)
     accessToken = getAccessToken(storageModule, logger)
     expect(accessToken).toBe(null)
